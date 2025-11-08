@@ -37,7 +37,7 @@ h1 {
 #buttons button {
   font-size: 10px;
   padding: 8px 16px;
-  color: #00ff00; 
+  color: #00ff00;
   background-color: #000;
   border: 2px solid #00ff00;
   text-transform: uppercase;
@@ -52,4 +52,12 @@ h1 {
 
 #buttons button:active {
   transform: translateY(1px);
+}
+
+.player {
+  background-color: #6b6;
+}
+
+.goal {
+background-color: #cc0;
 }

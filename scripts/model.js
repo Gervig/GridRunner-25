@@ -2,21 +2,23 @@ import Grid from "../data-structure/grid.js";
 
 const scale = 0.5;
 
-let rows, cols, cellSize;
+let rows = 16,
+  cols = 16,
+  cellSize;
 if (window.innerWidth <= 480) {
   // mobile
-  cols = 20*scale;
-  rows = 36*scale;
-  cellSize = "24px";
+  cols * scale;
+  rows * scale;
+  cellSize = "20px";
 } else if (window.innerWidth <= 768) {
   // tablet
-  cols = 32*scale;
-  rows = 48*scale;
+  cols * scale;
+  rows * scale;
   cellSize = "32px";
 } else {
   // desktop
-  cols = 48*scale;
-  rows = 27*scale;
+  cols * scale;
+  rows * scale;
   cellSize = "40px";
 }
 
@@ -29,10 +31,10 @@ export function getNumofRows() {
 }
 
 // sets the variables in the style.css
-const gridElement = document.getElementById('grid');
+const gridElement = document.getElementById("grid");
 
-gridElement.style.setProperty('--rows', rows);
-gridElement.style.setProperty('--cols', cols);
-gridElement.style.setProperty('--cell-size', cellSize);
+gridElement.style.setProperty("--rows", rows);
+gridElement.style.setProperty("--cols", cols);
+gridElement.style.setProperty("--cell-size", cellSize);
 
 const totalCells = cols * rows;
