@@ -73,6 +73,16 @@ function tick() {
       player.col++;
       if (player.col > 9) player.col = 0;
       break;
+    case "up":
+      // move the player up
+      player.row--;
+      if (player.row < 0) player.row = 9;
+      break;
+    case "down":
+      // move the player down
+      player.row++;
+      if (player.row > 9) player.row = 0;
+      break;
   }
 
   // re-add player to the model
@@ -93,6 +103,14 @@ function keyPress(event) {
     case "ArrowRight":
     case "d":
       model.state.direction = "right";
+      break;
+    case "ArrowUp":
+    case "w":
+      model.state.direction = "up";
+      break;
+    case "ArrowDown":
+    case "s":
+      model.state.direction = "down";
       break;
   }
 }
