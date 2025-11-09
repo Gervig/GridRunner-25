@@ -18,8 +18,9 @@ body {
 .cell {
   width: var(--cell-size);
   aspect-ratio: 1 / 1;
-  border: 1px solid #888;
-  background-color: white;
+  background-color: #777;
+  border-right: 1px dashed darkgray;
+  border-left: 1px dashed darkgray;
 }
 
 h1 {
@@ -38,7 +39,7 @@ h1 {
 #buttons {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers everything horizontally */
+  align-items: center;
   gap: 1em;
   margin: 1em 0;
 }
@@ -88,5 +89,5 @@ h1 {
 }
 
 .goal {
-background-color: #cc0;
+  background-color: #cc0;
 }

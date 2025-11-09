@@ -9,7 +9,10 @@ function startController() {
   let numOfRows = model.getNumofRows();
   let numOfCol = model.getNumOfCols();
 
+  // gets access to other modules
+  // when controller is started
   window.model = model;
+  window.view = view;
 
   const grid = document.getElementById("grid");
 
@@ -26,15 +29,25 @@ function startController() {
     }
   }
 
-  // model.startGame();
-}
+  // initialize the view after the DOM cells
+  view.initView();
 
-export function setCell(row, col, value) {
-  model.writeToCell(row, col, value);
+  // model.startGame();
+  tick();
 }
 
 startController();
 
 function log(text) {
   console.log(text);
+}
+
+function tick() {
+  // setup next game tick
+  setTimeout(tick, 500);
+
+  //TODO: do stuff
+
+  // update the display of the entire model
+  view.displayGrid();
 }
