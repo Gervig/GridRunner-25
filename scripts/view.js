@@ -10,6 +10,21 @@ export function registerEventHandlers() {
 
 function clickedButton(event) {
   const button = event.target;
+
+  switch (button.id) {
+    case "up":
+      model.state.direction = "up";
+      break;
+    case "left":
+      model.state.direction = "left";
+      break;
+    case "right":
+      model.state.direction = "right";
+      break;
+    case "down":
+      model.state.direction = "down";
+      break;
+  }
 }
 
 function log(text) {
