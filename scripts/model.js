@@ -2,15 +2,15 @@ import Grid from "../data-structure/grid.js";
 
 const scale = 0.5;
 
-// game is hardcoded to have a 16x16 grid
-let rows = 16,
-  cols = 16,
+// sets game grid with hardcoded values
+let rows = 10,
+  cols = 10,
   cellSize;
 if (window.innerWidth <= 480) {
   // mobile
   cols * scale;
   rows * scale;
-  cellSize = "20px";
+  cellSize = "35px";
 } else if (window.innerWidth <= 768) {
   // tablet
   cols * scale;
