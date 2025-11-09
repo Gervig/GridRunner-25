@@ -23,6 +23,17 @@ if (window.innerWidth <= 480) {
   cellSize = "40px";
 }
 
+// initalizes a player object at row, col
+// rows/2 & cols/2 means the player will start in the middle
+const player = {
+  row: Math.floor(rows / 2),
+  col: Math.floor(cols / 2),
+};
+
+export function getPlayer() {
+  return player;
+}
+
 export function getNumOfCols() {
   return cols;
 }
@@ -55,7 +66,6 @@ let gameGrid = new Grid(rows, cols);
 
 export function writeToCell(row, col, value) {
   gameGrid.set({ row: row, col: col }, value);
-  log(`Sat row: ${row}, col: ${col} to ${value}`);
 }
 
 export function readFromCell(row, col) {
@@ -65,3 +75,7 @@ export function readFromCell(row, col) {
 export function getGrid() {
   return gameGrid;
 }
+
+export let state = {
+  direction: "left",
+};

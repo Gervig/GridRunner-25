@@ -2,9 +2,16 @@
 import * as view from "./view.js";
 import * as model from "./model.js";
 
+// events: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Events
+// keyboard: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
+// keys: https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
+
 function startController() {
-  // kald view.register
+  // calls view.register
   view.registerEventHandlers();
+
+  // register key-presses
+  document.addEventListener("keydown", keyPress);
 
   let numOfRows = model.getNumofRows();
   let numOfCol = model.getNumOfCols();
@@ -35,6 +42,12 @@ function startController() {
   // model.startGame();
   tick();
 }
+// gets the player object from the model
+let player = model.getPlayer();
+// sets the player to the window
+window.player = player;
+// sets the direction to the window
+window.direction = model.state.direction;
 
 startController();
 
@@ -46,8 +59,40 @@ function tick() {
   // setup next game tick
   setTimeout(tick, 500);
 
-  //TODO: do stuff
+  // remove player from the model
+  model.writeToCell(player.row, player.col, 0);
+
+  switch (model.state.direction) {
+    case "left":
+      // move the player to the left
+      player.col--;
+      if (player.col < 0) player.col = 9;
+      break;
+    case "right":
+      // move the player to the right
+      player.col++;
+      if (player.col > 9) player.col = 0;
+      break;
+  }
+
+  // re-add player to the model
+  model.writeToCell(player.row, player.col, 1);
 
   // update the display of the entire model
   view.displayGrid();
+}
+
+function keyPress(event) {
+  // log(event);
+
+  switch (event.key) {
+    case "ArrowLeft":
+    case "a":
+      model.state.direction = "left";
+      break;
+    case "ArrowRight":
+    case "d":
+      model.state.direction = "right";
+      break;
+  }
 }
